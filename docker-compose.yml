@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  gin-demo:
+    image: xiaozuo7/gin-demo:v1
+    ports:
+      - "8080:8080"
