@@ -15,8 +15,8 @@ spec:
     - name: "8080"
       port: 8080
       targetPort: 8080
-      nodePort: 30001 # 手动指定nodePort
+      nodePort: 30001 #手动指定nodePort
   selector:
     io.kompose.service: gin-demo
 status:
-  loadBalancer: {}
+  loadBalancer: { }
