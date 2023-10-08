@@ -1,4 +1,4 @@
-FROM alpine:3.18.0
+FROM golang:1.21.1-alpine3.18 AS builder
 LABEL authors="cp"
 
 WORKDIR /build
@@ -10,6 +10,11 @@ RUN go mod download
 
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gin-demo .
+
+FROM alpine:3.18
+
+WORKDIR /app
+COPY --from=builder /build/gin-demo /app/
 
 EXPOSE 8080
 
