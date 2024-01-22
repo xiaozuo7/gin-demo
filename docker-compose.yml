@@ -3,5 +3,6 @@ version: "3"
 services:
   gin-demo:
     image: xiaozuo7/gin-demo:v1
+    container_name: gin-demo
     ports:
       - "8080:8080"
