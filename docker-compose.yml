@@ -4,5 +4,19 @@ services:
   gin-demo:
     image: xiaozuo7/gin-demo:v1
     container_name: gin-demo
+    networks:
+      - my-network
+
+  nginx-proxy:
+    image: nginx
+    container_name: nginx-proxy
+    volumes:
+      - /home/$USER/docker_volume/nginx:/etc/nginx/conf.d
     ports:
-      - "8080:8080"
+      - "80:80"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
