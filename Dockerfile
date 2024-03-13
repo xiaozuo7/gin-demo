@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine3.17 AS builder
+FROM golang:1.20-alpine3.18 AS builder
 LABEL authors="cp"
 
 WORKDIR /build
@@ -11,7 +11,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gin-demo .
 
-FROM alpine:3.17
+FROM alpine:3.18
 
 WORKDIR /app
 COPY --from=builder /build/gin-demo /app/
